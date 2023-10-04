@@ -1,0 +1,33 @@
+﻿@using ShoppingList.Entities;
+
+@model List<Category>
+<div class="container">
+    <form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Kategori Adı</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Category category in Model)
+                {
+                <tr>
+                        <th scope="row">@category.Id</th>
+                        <td><a href="#" style="text-decoration: none">@category.Name</a></td>
+                        <td style="width: 25%">
+                            <div class="row me-2">
+                                <a href="/admin/editcategory/@category.Id" class="btn btn-warning my-1">Kategoriyi Düzenle</a>
+                                <a href="/admin/removecategory/@category.Id" class="btn btn-danger my-1">Kategoriyi Kaldır</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
+
+

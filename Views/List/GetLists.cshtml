@@ -1,0 +1,76 @@
+﻿@using ShoppingList.Entities;
+
+@model List<List>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-9">
+			<div class="row">
+				@if(Model.Count() > 0)
+				{
+					@foreach (List list in Model)
+					{
+						@if (list.IsActive == false)
+						{
+							<div class="col-3 mt-3">
+								<a href="/list/listedit/@list.Id" style="text-decoration:none">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title" style="text-align: center">@list.Name</h5>
+											<p class="card-text">
+												<ul class="list-group list-group-flush">
+													<li class="list-group-item">
+														@list.CreatedDate Tarihinde oluşturuldu.
+													</li>
+												</ul>
+											</p>
+											<div class="text-center">
+												<a href="/product/productlist/@list.Id" class="btn btn-warning d-block mb-1">Ürün ekle</a>
+												<a href="/list/shopping/@list.Id" class="btn btn-primary d-block ">Alışverişe Çık</a>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						}
+						else
+						{
+							<div class="col-3 mt-3">
+								<a href="/list/shopping/@list.Id" style="text-decoration:none">
+									<div class="card bg-light">
+										<div class="card-body">
+											<h5 class="card-title" style="text-align: center">@list.Name</h5>
+											<p class="card-text">
+												<ul class="list-group list-group-flush bg-warning">
+													<li class="list-group-item">
+														@list.CreatedDate Tarihinde oluşturuldu.
+													</li>
+												</ul>
+											</p>
+											<div class="text-center">
+												<div class="btn btn-light mb-1 d-block ">Alışveriş yapılıyor</div>
+												<a href="/list/shopping/@list.Id" class="btn btn-primary d-block ">Alışverişe Devam Et</a>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+
+						}
+
+					}
+				} else
+				{
+					<div class="alert alert-warning text-center mt-2 ms-2" style="width:75%">Henüz liste oluşturulmamış lütfen liste oluşturun.</div>
+				}
+
+			</div>
+		</div>
+		<div class="col-3 mt-3">
+			<a href="/list/addlist" class="btn btn-primary d-block text-center">Yeni Liste Ekle</a>
+		</div>
+	</div>
+</div>

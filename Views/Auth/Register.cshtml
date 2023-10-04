@@ -1,0 +1,54 @@
+﻿@model RegisterModel
+
+<div class="container">
+    <div class="d-flex align-items-center h-100 mt-4">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-center mb-5">Üyelik Oluştur</h2>
+                            
+                            <form asp-controller="Auth" asp-action="Register" method="post">
+
+                                <div class="text-danger" asp-validation-summary="All"></div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" asp-for="FullName">Ad Soyad</label>
+                                    <input type="text" class="form-control form-control-lg" asp-for="FullName" />
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" asp-for="Email">Email</label>
+                                    <input type="email" class="form-control form-control-lg" asp-for="Email" />
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" asp-for="Password">Şifre</label>
+                                    <input type="password" class="form-control form-control-lg" asp-for="Password" />
+                                </div>
+
+                                <div class="form-outline mb-2">
+                                    <label class="form-label" asp-for="RePassword">Tekrar Şifre</label>
+                                    <input type="password" class="form-control form-control-lg" asp-for="RePassword" />
+                                </div>
+
+                                <div>
+                                    <a href="/auth/login" class="text-decoration-none">Bir Üyeliğin Varsa Giriş Yap</a>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-primary btn-lg mt-3">
+                                        Üyeliği Tamamla
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

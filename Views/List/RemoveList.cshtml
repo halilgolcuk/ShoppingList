@@ -1,0 +1,17 @@
+﻿@model ListViewModel
+<div class="container">
+    <div class="row">
+        <div class="text-center mt-5">
+            <div class="alert alert-danger">
+                <p> Listeyi silmek istediğinizden emin misiniz ? <br>'@Model.Name' siliniyor</p>
+                <form method="post" asp-controller="list" asp-action="removelistpost">
+                    <input type="hidden" name="list_id" value="@Model.Id"/> 
+                    <button type="submit" class="btn btn-danger">Evet</button>
+                    <a href="/list/listedit/@Model.Id" class="btn btn-primary">Hayır</a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

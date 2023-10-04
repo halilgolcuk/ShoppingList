@@ -1,0 +1,59 @@
+﻿<div class="container">
+	<div class="row">
+		<div class="col-3 my-2">
+			<div class="list-group">
+				<a href="/product/productlist/@(ViewBag.List.Id)" class="list-group-item list-group-item-action">Tüm Kategoriler</a>
+				@foreach (var category in ViewBag.Categories)
+				{
+					<a href="/product/productlist/@(ViewBag.List.Id)?category=@(category.Name)" class="list-group-item list-group-item-action">@category.Name</a>
+				}
+			</div>
+		</div>
+		<div class="col-7">
+			@if (ViewBag.Products.Count > 0)
+			{
+				<div class="row"> 
+					@foreach(var product in ViewBag.Products )
+					{	
+						<div class="col-3 m-2">
+							<div class="card" style="width: 12rem; height: 22rem">
+								<div style="width: 100%; height: 100%">
+									<img src="/img/@(product.image)" class="card-img-top">
+								</div>
+									<div class="card-body">
+									<h5 class="card-title text-center">@product.Name</h5>
+									<form method="post" asp-controller="product" asp-action="addproduct">
+										<input type="hidden" value="@ViewBag.List.Id" name="list_id" />
+										<input type="hidden" value="@product.Id" name="product_id">
+										<input type="text" name="description" class="form-check" style="width: 100%" placeholder="Açıklama :"/>
+										<div class="form-check d-flex mx-3">
+											<button type="submit" class="btn btn-primary mt-2">Onayla</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			} else
+			{
+				<div class="alert alert-warning">Listenize ekleyebileceğiniz bir ürün bulunmamaktadır.</div>
+			}
+		</div>
+		<div class="col-2 my-2">
+		<div class="row">
+			<p class="mb-2 text-center">'@ViewBag.List.Name' düzenleniyor</p>
+			<a href="/list/getlists/@(ViewBag.UserId)" class="btn btn-block btn-warning mb-2">Listelerime Dön</a>
+			<a href="/list/listedit/@(ViewBag.List.Id)" class="btn btn-block btn-primary mb-2">'@(ViewBag.List.Name)'</a>
+			<form method="post" asp-controller="product" asp-action="searchproduct" style="padding: 0">
+				<div class="input-group flex-nowrap" style="padding:0">
+					<input type="hidden" value="@(ViewBag.List.Id)" name="listId" />
+					<input type="text" class="form-control" placeholder="Search" id="product_name" name="product_name"  >
+					<label for="product_name">
+						<button type="submit" class="btn btn-info">Ara</button>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

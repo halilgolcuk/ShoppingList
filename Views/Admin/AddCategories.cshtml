@@ -1,0 +1,13 @@
+﻿<form method="post" asp-controller="Admin" asp-action="addcategories">
+	<div class="container col-9 mt-5">
+		@if(TempData["Message"] != null)
+		{
+			<div class="alert alert-warning">@TempData["Message"]</div>
+		}
+		<div class="mb-3">
+			<label for="name" class="form-label">Kategori Adı: </label>
+			<input type="text" name="category_name" class="form-control" id="name" placeholder="Lütfen yeni kategori için bir isim girin.">
+		</div>
+			<button type="submit" class="btn btn-primary">Yeni kategori ekle</button>
+	</div>
+</form>

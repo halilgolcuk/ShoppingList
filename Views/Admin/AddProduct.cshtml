@@ -1,0 +1,39 @@
+﻿@using ShoppingList.Entities;
+@model List<Category>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="addproduct">
+	<div class="container col-9 mt-5">
+		@if (TempData["Message"] != null)
+		{
+			<div class="alert alert-warning">@TempData["Message"]</div>
+			<a href="/admin/desk" class="btn btn-warning">Admin Panel</a>
+		} else
+		{
+			<div class="mb-3">
+				<label for="name" class="form-label">Ürün Adı: </label>
+				<input type="text" name="product_name" class="form-control" id="name" placeholder="Lütfen yeni ürün için bir isim girin.">
+			</div>
+			<div class="mb-3">
+				<input type="file" name="file">
+			</div>
+
+			@if (Model.Count() == 0)
+			{
+				<div class="alert alert-warning">Uygun kategori bulunmamaktadır. Lütfen önce kategori ekleyin.</div>
+				<a href="/admin/addcategories" class="btn btn-warning">Kategori Ekle</a>
+			} else
+			{
+				<select class="form-select" aria-label="Default select example" name="category_id">
+					<option selected disabled>Lütfen bir kategori seçin</option>
+					@foreach (Category category in Model)
+					{
+						<option value="@category.Id">@category.Name</option>
+					}
+				</select>
+				<button type="submit" class="btn btn-primary mt-2">Yeni ürün ekle</button>
+			}
+
+		}
+		
+	</div>
+</form>

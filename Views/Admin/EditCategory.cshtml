@@ -1,0 +1,11 @@
+﻿@using ShoppingList.Entities;
+@model Category
+<form method="post" asp-controller="Admin" asp-action="editcategory">
+	<div class="container col-9 mt-5">
+		<div class="mb-3">
+			<label for="name" class="form-label">Kategori Adı: </label>
+			<input type="text" name="category_name" class="form-control" id="name" value="@Model.Name">
+		</div>
+		<button type="submit" class="btn btn-primary">Kategoriyi Güncelle</button>
+	</div>
+</form>

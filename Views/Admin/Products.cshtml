@@ -1,0 +1,46 @@
+﻿@model List<AdminProductViewModel>
+<div class="container">
+    <form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" width="25%">Ürün Görseli</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Kategori Adı</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AdminProductViewModel product in Model)
+                {
+                    <tr>
+                        <th scope="row">@product.ProductId</th>
+                        <td><a href="/img/@(product.ProductImage)" target="_blank"><img src="/img/@(product.ProductImage)" style="width: 25%;height:5rem" /></a></td>
+                        <td>@product.ProductName</td>
+                        <td>@product.CategoryName</td>
+                        <td style="width: 25%">
+                            <div class="row me-2">
+                                <a href="/admin/editproduct/@product.ProductId" class="btn btn-warning my-1">Ürünü Düzenle</a>
+                                <a href="/admin/removeproduct/@product.ProductId" class="btn btn-danger my-1">Ürünü Kaldır</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @* <tr>
+                    <th scope="row">1</th>
+                    <td><a href="/img/domates.jfif" target="_blank"><img src="/img/domates.jfif" style="width: 50%" /></a></td>
+                    <td><a href="#" style="text-decoration: none">Domates</a></td>
+                    <td style="width: 25%">
+                        <div class="row me-2">
+                            <a href="#" class="btn btn-warning my-1">Ürünü Düzenle</a>
+                            <a href="/admin/removeproduct" class="btn btn-danger my-1">Ürünü Kaldır</a>
+                        </div>
+                    </td>
+                </tr> *@
+            </tbody>
+        </table>
+    </form>
+</div>
+
+

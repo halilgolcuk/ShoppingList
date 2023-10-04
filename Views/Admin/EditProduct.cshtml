@@ -1,0 +1,16 @@
+﻿<form method="post" asp-controller="Admin" asp-action="editproduct">
+	<div class="container col-9 mt-5">
+		<div class="mb-3">
+			<label for="name" class="form-label">Ürün Adı: </label>
+			<input type="text" name="product_name" class="form-control" id="product_name" value="@ViewBag.Model.ProductName">
+		</div>
+		<select class="form-select" aria-label="Default select example" name="category_id">
+			<option value="@ViewBag.Model.CategoryId" disabled selected>@ViewBag.Model.CategoryName</option>
+			@foreach(var category in ViewBag.Categories)
+			{
+				<option value="@category.Id">@category.Name</option>
+			}
+		</select>
+		<button type="submit" class="btn btn-primary mt-2">Ürünü Güncelle</button>
+	</div>
+</form>

@@ -1,0 +1,46 @@
+﻿@model ListProductViewModel
+<form method="post" asp-controller="list" asp-action="shoppingend">
+    <input type="hidden" value="@Model.ListId" name="list_id" />
+    <div class="container">
+        <p class="text-center my-2" style="color: black; background-color: #dee2e6">'@Model.ListName' ile alışveriş yapılıyor</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" width="25%">Ürün Görseli</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ListProducts.Count > 0)
+                {
+                    @foreach (var product in Model.ListProducts)
+                    {
+                        <tr>
+                            <th scope="row">@product.Id</th>
+                            <td><a href="/img/@(product.image)" target="_blank"><img src="/img/@(product.image)" style="width: 25%;height:4rem" /></a></td>
+                            <td>@product.Name</td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="product_@(product.Id)" value="@product.Id" id="flexCheckDefault-@(product.Id)">
+                                    <label class="form-check-label" for="flexCheckDefault-@(product.Id)">
+                                        Aldım
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">Bu listeye ait ürün bulunmamaktadır.</div>
+                }
+
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Alışverişi Tamamla</button>
+        </div>
+    </div>
+</form>

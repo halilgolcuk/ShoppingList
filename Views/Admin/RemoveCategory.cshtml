@@ -1,0 +1,16 @@
+﻿@using ShoppingList.Entities;
+@model Category
+<div class="container">
+    <div class="row">
+        <div class="text-center mt-5">
+            <div class="alert alert-danger">
+                <p>Kategoriyi silmek istediğinizden emin misiniz ? <br>'@Model.Name' Kategorisi siliniyor</p>
+                <form method="post" asp-action="removecategorypost" asp-controller="admin">
+                    <input type="hidden" name="category_id" value="@Model.Id"/>
+                    <button type="submit" class="btn btn-danger">Evet</button>
+                    <a href="/admin/categories" class="btn btn-primary">Hayır</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
